@@ -1,14 +1,18 @@
+import { useShoppingCart } from "../context/useShoppingCart";
+import { formatCurrency } from "../utilities/formatCurrency";
 import Button from "./Button";
 
 type ProductProps = {
+  id: number;
   sku: string;
   name: string;
   price: number;
 };
 
-function Product({ sku, name, price }: ProductProps) {
+function Product({ id, sku, name, price }: ProductProps) {
+  const { incrementCartQuantity } = useShoppingCart();
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 sm:items-start items-center">
       <h2 className="font-bold text-xl px-2">{name}</h2>
       <div>
         <img
@@ -17,10 +21,9 @@ function Product({ sku, name, price }: ProductProps) {
           alt={name}
         />
       </div>
-
-      <p className="font-medium text-xl px-2">${price}</p>
+      <p className="font-medium text-xl px-2">{formatCurrency(price)}</p>
       <div>
-        <Button>Add to Cart</Button>
+        <Button onClick={() => incrementCartQuantity(id)}>Add to Cart</Button>
       </div>
     </div>
   );

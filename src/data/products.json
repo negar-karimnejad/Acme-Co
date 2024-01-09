@@ -1,15 +1,18 @@
  [
         {
+            "id":1,
             "sku": "imgs/item0001.jpg",
             "name": "Widget",
             "price": 9.99
         },
         {
+            "id":2,
             "sku": "imgs/item0002.jpg",
             "name": "Premium Widget",
             "price": 19.99
         },
         {
+            "id":3,
             "sku": "imgs/item0003.jpg",
             "name": "Deluxe Widget",
             "price": 29.99

@@ -1,19 +1,20 @@
-import products from "../data/products.json";
-import Product from "./Product";
+import { useShoppingCart } from "../context/useShoppingCart";
+import Button from "./Button";
+import ShoppingCart from "./ShoppingCart";
+import Store from "./Store";
+import Totals from "./Totals";
 
 function Main() {
+  const { isOpen, clearCart } = useShoppingCart();
+
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-5">
-        {products.map((product, index) => (
-          <Product key={index} {...product} />
-        ))}
-      </div>
+    <div className="px-5 md:px-0 md:w-4/5 mx-auto">
+      {isOpen ? <ShoppingCart /> : <Store />}
       <div className="font-medium mt-4">
-        <p>Total Items: 0</p>
-        <p>Total Price: $0</p>
+        <Totals />
+        {isOpen && <Button onClick={clearCart}>Place Order</Button>}
       </div>
-    </>
+    </div>
   );
 }
 
