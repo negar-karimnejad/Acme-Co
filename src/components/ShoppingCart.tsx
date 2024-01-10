@@ -4,7 +4,7 @@ import ShoppingCartItem from "./ShoppingCartItem";
 function ShoppingCart() {
   const { cartItems, goToProductsPage } = useShoppingCart();
   return (
-    <div className="flex flex-col gap-1 h-[22rem]">
+    <div className="flex flex-col gap-1 sm:h-[22rem]">
       {cartItems.length > 0 ? (
         cartItems.map((product) => (
           <ShoppingCartItem key={product.id} {...product} />

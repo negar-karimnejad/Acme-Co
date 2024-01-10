@@ -15,40 +15,40 @@ function ShoppingCartItem({ id, quantity }: ShoppingCartItemProps) {
   if (product == null) return null;
 
   return (
-    <div className="border-2 border-white border-b-gray-200 flex w-full items-center justify-between text-right">
-      <div className="flex flex-1 sm:items-center">
-        <img
-          className="h-28 object-cover rounded-xl transition brightness-90 hover:brightness-100 shadow-md"
-          src={product.sku}
-          alt={product.name}
-        />
+    <div className="pb-1 border-2 border-white border-b-gray-200 flex">
+      <img
+        className="h-28 object-cover rounded-xl transition brightness-90 hover:brightness-100 shadow-md"
+        src={product.sku}
+        alt={product.name}
+      />
+      <div className="w-full flex justify-between pt-1 flex-col gap-2">
         <h2 className="font-bold text-lg whitespace-nowrap px-2">
           {product.name}
         </h2>
-      </div>
-      <div className="flex flex-1 items-center gap-5">
-        <p className="flex-1 font-medium text-xl px-2 text-gray-600">
-          {formatCurrency(product.price)}
-        </p>
-        <div className="flex-1 font-medium">
-          <select
-            className="p-1 border"
-            onChange={(e) => changeProductQuantity(id, Number(e.target.value))}
-            value={quantity}
-          >
-            {Array(10)
-              .fill(0)
-              .map((_, index) => (
-                <option key={index} value={index + 1}>
-                  {index + 1}
-                </option>
-              ))}
-          </select>
-        </div>
-        <p className="flex-1 font-medium text-xl px-2 text-gray-600">
-          {formatCurrency(product.price * quantity)}
-        </p>
-        <div className="flex-1 text-red-400 text-lg font-bold">
+        <div className="w-full flex items-center justify-between">
+          <p className=" font-medium text-xl px-2 text-gray-600">
+            {formatCurrency(product.price)}
+          </p>
+          <div className=" font-medium">
+            <select
+              className="p-1 border"
+              onChange={(e) =>
+                changeProductQuantity(id, Number(e.target.value))
+              }
+              value={quantity}
+            >
+              {Array(10)
+                .fill(0)
+                .map((_, index) => (
+                  <option key={index} value={index + 1}>
+                    {index + 1}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <p className="font-medium text-xl px-2 text-gray-600">
+            {formatCurrency(product.price * quantity)}
+          </p>
           <Button onClick={() => removeFromCart(id)}>x</Button>
         </div>
       </div>
